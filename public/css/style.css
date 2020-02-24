@@ -1,0 +1,14 @@
+.alert {
+	border-radius: 10px;
+	box-shadow: .1em .1em hotpink;
+}
+
+.red {
+	color: white;
+	background-color: red;
+}
+
+.green {
+	color: white;
+	background-color: green;
+}
