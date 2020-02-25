@@ -15,6 +15,8 @@
         <% if (currentUser) { %>
           <a href="/auth/logout">Logout</a>
           <a href="/profile">Profile</a>
+          <a href="/character/create">Add Character</a>
+          <a href="/global">Global Chat</a>
         <% } else { %>
           <a href="/auth/signup">Signup</a>
           <a href="/auth/login">Login</a>
@@ -23,7 +25,6 @@
     </header>
     <div class="container">
       <%- JSON.stringify(currentUser) %>
-      <h1>Authentication</h1>
       <% include partials/alerts %>
       <%- body %>
     </div>

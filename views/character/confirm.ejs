@@ -1,0 +1,14 @@
+<h1>Confirm Page</h1>
+
+<ul>
+	<% characters.forEach(function(character) { %>
+		<li>
+			<form action="/character/confirm" method="POST">
+				<input type="hidden" name="name" value="<%= character.name %>">
+				<input type="hidden" name="_id" value="<%= character._id %>">
+				<input type="hidden" name="gender" value="<%= character.gender %>">
+				<input type="submit" value="<%= character.name %>">
+			</form>
+		</li>
+	<% }) %>
+</ul>

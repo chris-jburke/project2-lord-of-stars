@@ -14,7 +14,8 @@ router.post('/signup', function(req,res) {
 		},
 		defaults: {
 			name: req.body.name,
-			password: req.body.password
+			password: req.body.password,
+			character_id: ''
 		}
 	}).then(function([user, created]){
 		if(created) {

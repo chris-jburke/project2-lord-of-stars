@@ -9,7 +9,11 @@ const helmet = require('helmet');
 const db = require('./models');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
+
+
 const app = express();
+const server = require('http').createServer(app);
+const io = require('socket.io')(server);
 
 app.set('view engine', 'ejs');
 app.use(require('morgan')('dev'));
@@ -48,13 +52,83 @@ app.get('/', function(req, res) {
 	res.render('index');
 });
 
+
 app.get('/profile', isLoggedIn, function(req, res) {
+	db.user.findOne({
+		where: {
+			id: req.user.id
+		},
+		include: [db.character]
+	}).then(function(currUser) {
+		console.log('\n');
+		console.log('\n');
+		console.log('\n');
+		//console.log(currUser);
+		//res.render('profile');
+		db.character.findOne({
+			where: {
+				id: currUser.character.id
+			},
+			include: [db.quote]
+		}).then(function(currChar) {
+			//console.log(currChar);
+			res.render('profile', {character: currChar})
+		}).catch(err => console.log('ERROR'));
+	}).catch(err => console.log("ERROR"));
+	/*
+	db.character.findOne({
+		where: {
+			id: req.params.id
+		},
+		include: [db.quote]
+	}).then(function(currChar) {
+		res.render('character/show', {character: currChar});
+	}).catch(function(err) {
+		console.log(err);
+		res.send("ERROR");
+	})
   res.render('profile');
+  */
 });
 
-app.use('/auth', require('./controllers/auth'));
-app.use('/', isLoggedIn, require('./controllers/test'));
+app.get('/global', isLoggedIn, function(req, res) {
+	db.user.findOne({
+		where: {
+			id: req.user.id
+		},
+		include: [db.character]
+	}).then(function(currUser) {
+		console.log('\n');
+		console.log('\n');
+		console.log('\n');
+		//console.log(currUser);
+		//res.render('profile');
+		db.character.findOne({
+			where: {
+				id: currUser.character.id
+			},
+			include: [db.quote]
+		}).then(function(currChar) {
+			//console.log(currChar);
+			res.render('global', {character: currChar})
+		}).catch(err => console.log(err));
+	}).catch(err => console.log(err));
+});
 
-var server = app.listen(process.env.PORT || 3000);
+
+app.use('/auth', require('./controllers/auth'));
+app.use('/character', isLoggedIn, require('./controllers/character'));
+
+server.listen(process.env.PORT || 3000);
+
+io.on('connection', function(socket) {
+	console.log('a user connected');
+	socket.on('chat message', function(msg) {
+		io.emit("chat message", msg);
+	});
+	socket.on('disconnect', function() {
+		console.log('user disconnect');
+	})
+})
 
 module.exports = server;

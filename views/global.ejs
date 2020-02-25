@@ -1,0 +1,37 @@
+<h1>Global Chat Page</h1>
+<ul id="messages"></ul>
+<form action="">
+	<input id="m" autocomplete="off" disabled="true" /><button>Send</button>
+</form>
+<ul id="quote-list">
+	<% let index = 0; %>
+	<% character.quotes.forEach(function(quote) { %>
+	<li>
+		<button class="quotes" id="quote-<%= index %>"><%= quote.quote %></button>
+	</li>
+	<% index++; %>
+	<% }) %>
+</ul>
+ <script src="/socket.io/socket.io.js"></script>
+ <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+ <script>
+      $(function () {
+        var socket = io();
+        $('.quotes').click(function(){
+        	let quoteId = $(this).attr('id');
+        	console.log(quoteId)
+        	let getQuote = '#' + quoteId;
+        	$('#m').val($(getQuote).text())
+        })
+        $('form').submit(function(e){
+          e.preventDefault(); // prevents page reloading
+          let charName = "<%= character.name %>: "
+          socket.emit('chat message', charName + $('#m').val());
+          $('#m').val('');
+          return false;
+        });
+        socket.on('chat message', function(msg){
+          $('#messages').append($('<li>').text(msg));
+        });
+      });
+</script>
