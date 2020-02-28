@@ -1,12 +1,13 @@
-<h1>Global Chat Page</h1>
+<h1 class="profile-text">Global Chat</h1>
 <div class="row">
   <div class="col-6">
-    <div class="row"id="messages"></div>
+    <div class="flex-column d-flex" id="messages"></div>
   </div>
   <div class="col-6">
-    <form action="">
-	   <input id="m" autocomplete="off" disabled="true" /><button>Send</button>
-    </form>
+    <div class="row">
+    <div class="col-12">
+    <label>Search Quotes:</label>
+    <br>
     <select id="drop-select" class="selectpicker" data-live-search="true" dropdownAlignRight="true">
     <% character.quotes.forEach(function(quote) { %>
     <% let index = 0; %>
@@ -16,8 +17,12 @@
     <% index++; %>
     <% }) %>
     </select>
-  </div>
-</div>
+    <form action="">
+     <input id="m" autocomplete="off" disabled="true" /><button class="btn btn-primary">Chat</button>
+    </form>
+    </div>
+    </div>
+<h6>Full List of Quotes:</h6>
 <ul id="quote-list">
 	<% let index = 0; %>
 	<% character.quotes.forEach(function(quote) { %>
@@ -27,6 +32,8 @@
 	<% index++; %>
 	<% }) %>
 </ul>
+  </div>
+</div>
  <script src="/socket.io/socket.io.js"></script>
  <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
  <script>
@@ -56,9 +63,9 @@
           if(msg.includes('https://')){ 
             let msgSplit = msg.split('&');
             console.log(msgSplit);
-            $('#messages').append($('<div>', {class: 'col-9'}).text(msgSplit[1]).prepend($('<img>',{class: 'message-img col-3', src: msgSplit[0]})));
+            $('#messages').append($('<div>', {class: 'p-2 message-row'}).text(' ' + msgSplit[1]).prepend($('<img>',{class: 'message-img', src: msgSplit[0]})));
           } else {
-            $('#messages').append($('<div>', {class: 'col-12'}).text(msg));
+            $('#messages').append($('<div> message-row', {class: 'p-2'}).text(msg));
           }
         });
       });
