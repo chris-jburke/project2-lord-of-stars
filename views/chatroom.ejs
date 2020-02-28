@@ -1,0 +1,60 @@
+<h1><%= data.room %> Chat Room</h1>
+<ul id="messages"></ul>
+<form action="">
+	<input id="m" autocomplete="off" disabled="true" /><button>Send</button>
+</form>
+<select id="drop-select" class="selectpicker" data-live-search="true" dropdownAlignRight="true">
+  <% data.character.quotes.forEach(function(quote) { %>
+    <% let index = 0; %>
+    <option id="drop-<%= index %>" data-tokens="<%= quote.quote.slice(0,30) %>">
+      <%= quote.quote %>
+    </option>
+    <% index++; %>
+  <% }) %>
+  <option>
+</select>
+<ul id="quote-list">
+	<% let index = 0; %>
+	<% data.character.quotes.forEach(function(quote) { %>
+	<li>
+		<button class="quotes" id="quote-<%= index %>"><%= quote.quote %></button>
+	</li>
+	<% index++; %>
+	<% }) %>
+</ul>
+ <script src="/socket.io/socket.io.js"></script>
+ <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+ <script>
+      $(function () {
+        var socket = io();
+        socket.emit('change room', '<%= data.room %>')
+        $('.quotes').click(function(){
+        	let quoteId = $(this).attr('id');
+        	console.log(quoteId)
+        	let getQuote = '#' + quoteId;
+        	$('#m').val($(getQuote).text())
+        })
+        $('#drop-select').on('hide.bs.select', function (e, clickedIndex, isSelected, previousValue) {
+          $('#m').val(e.target.value);
+        })
+        $('form').submit(function(e){
+          e.preventDefault(); // prevents page reloading
+          let charImage = "<%= data.character.img %>&";
+          if(!charImage){
+            charImage = "<%= data.character.name %>: "
+          }
+          socket.emit('<%=data.room %> message', charImage + $('#m').val());
+          $('#m').val('');
+          return false;
+        });
+        socket.on('<%= data.room %> message', function(msg){
+          if(msg.includes('https://')){
+            let msgSplit = msg.split('&');
+            console.log(msgSplit);
+            $('#messages').append($('<li>').text(msgSplit[1]).prepend($('<img>',{class: 'message-img', src: msgSplit[0]})));            
+          } else {
+            $('#messages').append($('<li>').text(msg));
+          }
+        });
+      });
+</script>

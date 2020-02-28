@@ -115,6 +115,35 @@ app.get('/global', isLoggedIn, function(req, res) {
 	}).catch(err => console.log(err));
 });
 
+app.get('/rooms', function(req,res) {
+	res.render('rooms');
+})
+app.post('/rooms', function(req, res) {
+	res.redirect(`/rooms/${req.body.name}`)
+})
+app.get('/rooms/:id', function(req,res) {
+	db.user.findOne({
+		where: {
+			id: req.user.id
+		},
+		include: [db.character]
+	}).then(function(currUser) {
+		console.log('\n');
+		console.log('\n');
+		console.log('\n');
+		//console.log(currUser);
+		//res.render('profile');
+		db.character.findOne({
+			where: {
+				id: currUser.character.id
+			},
+			include: [db.quote]
+		}).then(function(currChar) {
+			//console.log(currChar);
+			res.render('chatroom', {data: {character: currChar, room: req.params.id}})
+		}).catch(err => console.log(err));
+	}).catch(err => console.log(err));
+})
 
 app.use('/auth', require('./controllers/auth'));
 app.use('/character', isLoggedIn, require('./controllers/character'));
@@ -126,6 +155,13 @@ io.on('connection', function(socket) {
 	socket.on('chat message', function(msg) {
 		io.emit("chat message", msg);
 	});
+	socket.on('change room', function(room){
+		console.log("HERE in change GLOBAL to: " + room)
+		socket.join(room);
+		socket.on(`${room} message`, function(msg) {
+			io.emit(`${room} message`, msg);
+		});
+	})
 	socket.on('disconnect', function() {
 		console.log('user disconnect');
 	})

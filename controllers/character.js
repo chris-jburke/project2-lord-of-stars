@@ -2,6 +2,9 @@ require('dotenv').config();
 const express = require('express');
 const router = express.Router();
 const db = require('../models');
+const cloudinary = require('cloudinary')
+const multer = require('multer');
+const upload = multer({dest: './uploads'});
 const axios = require('axios');
 
 const lotrInstance = axios.create({
@@ -18,6 +21,7 @@ router.get('/create', function(req,res) {
 router.get('/confirm', function(req, res) {
 	console.log('\n')
 	console.log('\n')
+	console.log(req.query)
 	lotrInstance.get(lotrInstance.baseURL)
 	.then(function(response) {
 		let returnData = response.data;
@@ -71,6 +75,7 @@ router.post('/confirm', function(req, res) {
 				console.log(err);
 			})
 		}
+
 		res.redirect(`/character/show/${currChar.id}`);
 	}).catch(err => {
 		console.log(err);
@@ -117,5 +122,31 @@ router.get('/show/:id', function(req, res) {
 		res.send("ERROR");
 	})
 }) 
+
+router.post('/image/:id', upload.single('inputFile'), function(req, res) {
+	console.log(req.file.path);
+	cloudinary.uploader.upload(req.file.path, function(result) {
+		console.log(result);
+		let cloudID = result.public_id;
+		let imgLink = `https://res.cloudinary.com/chrisbga/image/upload/c_scale,w_200/v1582056153/${cloudID}.jpg`
+		db.character.update(
+			{
+				img: imgLink
+			},
+			{
+				where: {id: req.params.id}
+			}
+		).then(function(updated) {
+			if(updated) {
+				console.log('\n');
+				console.log('\n');
+				console.log('\n');
+				console.log('SUCCESS');
+			}
+		}).catch(err => console.log(err));
+	})
+	res.redirect(`/character/show/${req.params.id}`);
+
+})
 
 module.exports = router;

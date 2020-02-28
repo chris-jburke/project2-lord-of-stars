@@ -8,7 +8,27 @@
 	background-color: red;
 }
 
+.profile-text{
+	text-align: center;
+}
 .green {
 	color: white;
 	background-color: green;
+}
+.profile-quotes {
+	text-align: center;
+	margin-top: 8px;
+	margin-bottom: 8px;
+}
+#character-search-field {
+	width: 300px;
+}
+#messages {
+	height: 400px;
+	background-color: grey;
+	list-style: none;
+	overflow: auto;
+}
+ul {
+	list-style: none;
 }
