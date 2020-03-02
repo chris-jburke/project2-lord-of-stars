@@ -1,5 +1,5 @@
 # Project2 Lord of Stars
-
+## Link To Live Site
 ## Express Authentication
 
 Express authentication template using Passport + flash messages + custom middleware
@@ -25,6 +25,12 @@ Express authentication template using Passport + flash messages + custom middlew
   * Run `createdb express_auth_development` to create the development database
   * Run `createdb express_auth_test` to create the test database
   * Run `sequelize db:migrate` to run migrations
+
+#### Technologies Used
+* Node.js
+* Express
+* Postgres/Sequelize
+* EJS
 
 #### Wireframes
 <https://wireframe.cc/SQpBk4>
