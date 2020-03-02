@@ -1,7 +1,12 @@
-<h1>Add character page!</h1>
-<form method="GET" action="/character/confirm">
-	<label for="name">Search for a Lord of the Rings Character:</label>
-	<br>
-	<input id="character-search-field" type="text" name="name" placeholder="Enter Character Name">
-	<input class="btn btn-primary" type="submit" value="Enter">
+<h1 class="profile-text">Add character page!</h1>
+<h6 class="profile-text">Search for a Lord of the Rings Character:</h6>
+<form class="form-row" method="GET" action="/character/confirm">
+	<div class="col-4"></div>
+	<div class="col-4">
+		<input class="form-control" id="character-search-field" type="text" name="name" placeholder="Enter Character Name">
+	</div>
+	<div class="col-2">
+		<input class="btn btn-dark" type="submit" value="Enter">
+	</div>
+	<div class="col-2"></div>
 </form>

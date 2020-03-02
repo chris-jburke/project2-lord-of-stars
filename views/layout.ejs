@@ -16,26 +16,26 @@
         <% if (currentUser) { %>
           <div class="row justify-content-center">
             <div class="col-sm-auto">
-              <a href="/profile">Profile</a>
+              <a class="link-text" href="/profile">Profile</a>
             </div>
             <div class="col-sm-auto">
-              <a href="/character/create">Character Selector</a>
+              <a class="link-text" href="/character/create">Character Selector</a>
             </div>
             <div class="col-sm-auto">
-              <a href="/global">Global Chat</a>
+              <a class="link-text" href="/global">Global Chat</a>
             </div>
-            <div class="col-sm-auto"><a href="/rooms">Chat Room</a></div>
+            <div class="col-sm-auto"><a class="link-text" href="/rooms">Chat Room</a></div>
             <div class="col-sm-auto">
-              <a href="/auth/logout">Logout</a>
+              <a class="link-text" href="/auth/logout">Logout</a>
             </div>
           </div>
         <% } else { %>
           <div class="row justify-content-end">
             <div class="col-sm-auto">
-              <a href="/auth/signup">Signup</a>
+              <a class="link-text" href="/auth/signup">Signup</a>
             </div>
             <div class="col-sm-auto">
-              <a href="/auth/login">Login</a>
+              <a class="link-text" href="/auth/login">Login</a>
             </div>
           </div>
         <% } %>

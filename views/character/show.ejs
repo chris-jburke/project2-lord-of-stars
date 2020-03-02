@@ -1,14 +1,14 @@
-<h2 class="profile-text"><%= character.name %></h2>
+<h1 class="profile-text"><%= character.name %></h1>
 <div class="row">
 	<div class="profile-text col-6 my-auto">
 		<h5><%= character.gender %></h5>
 	</div>
 <% if(!character.img) { %>
 	<div class="col-6">
-		<h5>Add an image:</h5>
+		<label class="label-text">Add an image:</label>
 		<form action="/character/image/<%= character.id %>" method="POST" enctype="multipart/form-data">
 			<input type="file" name="inputFile">
-			<input type="submit" class="btn btn-primary">
+			<input type="submit" class="btn btn-dark">
 		</form>
 	</div>
 <% } else { %>

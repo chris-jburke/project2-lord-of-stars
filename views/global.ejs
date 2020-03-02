@@ -6,7 +6,7 @@
   <div class="col-6">
     <div class="row">
     <div class="col-12">
-    <label>Search Quotes:</label>
+    <label class="search-label">Search Quotes:</label>
     <br>
     <select id="drop-select" class="selectpicker" data-live-search="true" dropdownAlignRight="true">
     <% character.quotes.forEach(function(quote) { %>
@@ -17,8 +17,8 @@
     <% index++; %>
     <% }) %>
     </select>
-    <form action="">
-     <input id="m" autocomplete="off" disabled="true" /><button class="btn btn-primary">Chat</button>
+    <form class="form-inline chat-form" action="">
+     <input id="m" class="form-control" autocomplete="off" disabled="true" /><button class="btn btn-dark">Chat</button>
     </form>
     </div>
     </div>
@@ -27,7 +27,7 @@
 	<% let index = 0; %>
 	<% character.quotes.forEach(function(quote) { %>
 	<li>
-		<button class="quotes" id="quote-<%= index %>"><%= quote.quote %></button>
+		<button type="button" class="btn btn-dark quotes" id="quote-<%= index %>"><%= quote.quote %></button>
 	</li>
 	<% index++; %>
 	<% }) %>
@@ -37,6 +37,9 @@
  <script src="/socket.io/socket.io.js"></script>
  <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
  <script>
+  let domMessages = document.querySelector('#messages');
+  let isScrolledToBottom = domMessages.scrollHeight - domMessages.clientHeight <= domMessages.scrollTop;
+
       $(function () {
         var socket = io();
 
@@ -64,8 +67,16 @@
             let msgSplit = msg.split('&');
             console.log(msgSplit);
             $('#messages').append($('<div>', {class: 'p-2 message-row'}).text(' ' + msgSplit[1]).prepend($('<img>',{class: 'message-img', src: msgSplit[0]})));
+
+            if(isScrolledToBottom) {
+              domMessages.scrollTop = domMessages.scrollHeight - domMessages.clientHeight;
+            }
+
           } else {
             $('#messages').append($('<div> message-row', {class: 'p-2'}).text(msg));
+            if(isScrolledToBottom) {
+              domMessages.scrollTop = domMessages.scrollHeight - domMessages.clientHeight;
+            }
           }
         });
       });

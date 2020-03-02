@@ -1,13 +1,25 @@
+html, body {
+	min-height: 100vh;
+	min-width: 100vh;
+}
+
+
 .alert {
 	border-radius: 10px;
 	box-shadow: .1em .1em hotpink;
 }
-
 .red {
 	color: white;
 	background-color: red;
 }
-
+.home-text {
+	text-align: center;
+	font-size: 5em;
+}
+.link-text {
+	font-size: 2em;
+	color: black;
+}
 .profile-text{
 	text-align: center;
 }
@@ -16,12 +28,15 @@
 	background-color: green;
 }
 .message-row {
+	margin-left: 65px;
+	text-indent: -65px;
 	padding: 0 0;
 	margin-bottom: 0;
 }
 .message-img{
 	padding: 0 0;
-	width: 25px;
+	border-radius: 45px;
+	width: 65px;
 }
 .profile-quotes {
 	text-align: center;
@@ -29,21 +44,38 @@
 	margin-bottom: 8px;
 }
 #character-search-field {
-	width: 300px;
+	width: 35vw;
+}
+.chat-form {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+.dropdown-item {
+	max-width: 40vw;
+}
+.search-label {
+	font-size: 1.1em;
 }
 #quote-list {
 	margin-top: 10px;
-	height: 270px;
-	overflow: auto;
+	overflow: scroll;
 	padding: 0;
 	list-style-type: none;
+	max-height: 55vh;
+}
+#quote-list li {
+	margin-top: 2px;
+	margin-bottom: 2px;
 }
 #messages {
-	height: 400px;
-	background-color: #dedede;
+	height: 80vh;
+	background-color: #000000;
+	border-radius: 25px;
+	color: white;
 	list-style: none;
-	overflow: auto;
+	overflow: scroll;
 }
+
 ul {
 	list-style: none;
 }

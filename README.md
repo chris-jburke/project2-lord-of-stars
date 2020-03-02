@@ -1,4 +1,6 @@
-# Express Authentication
+# Project2 Lord of Stars
+
+## Express Authentication
 
 Express authentication template using Passport + flash messages + custom middleware
 
@@ -23,3 +25,10 @@ Express authentication template using Passport + flash messages + custom middlew
   * Run `createdb express_auth_development` to create the development database
   * Run `createdb express_auth_test` to create the test database
   * Run `sequelize db:migrate` to run migrations
+
+#### Wireframes
+
+#### Sources
+<http://jsfiddle.net/dotnetCarpenter/KpM5j/>
+<https://stackoverflow.com/questions/21316313/how-can-i-indent-all-text-in-a-paragraph-except-the-first-line>
+<https://github.com/socketio/chat-example>
