@@ -32,6 +32,7 @@ Express authentication template using Passport + flash messages + custom middlew
 * Postgres/Sequelize
 * EJS
 
+
 #### Wireframes
 <https://wireframe.cc/SQpBk4>
 <https://wireframe.cc/uANSx0>
@@ -40,6 +41,37 @@ Express authentication template using Passport + flash messages + custom middlew
 <https://wireframe.cc/2GbKrT>
 <https://wireframe.cc/Squuqc>
 <https://wireframe.cc/y75XI0>
+
+#### Programmatic Approach
+* Set requirements for minimum viable product
+* Created wireframes
+* Created a database to store all relevent information
+* Created initial RESTful routes required for usage
+* Wrote the code to access the LOTR api and store relevant information in my database
+* Created a page for global chat using the socket.io node module
+* Added a dropdown search box to filter through character quotes
+* Created additional routes and made necessary changes to my socket code to allow for multiple chat rooms
+* Add the ability to upload of picture of your character using cloudinary
+* Updated the chat to include the picture of the characters
+* Styled the site and added some quality of life changes
+
+#### MVP:
+* Utilize the LOTR api to access information about LOTR characters
+* Build a database that will link a user to a specific character and give them access to the quotes of that character
+* Create specific rooms
+* Build a page that utilizes socket.io to create a global chat
+* Create a list of buttons for each quote of a given character(and user) that when clicked will put the quote into the global chat
+* Create a profile page that will have information about the character the user is role playing as
+
+#### Stretch Goals:
+* Allow users to change their character
+* Create a database of gifs that feature the quotes of a given character and allow users to share these gif in the global chat
+* Allow a user to create a private chat with another user (big stretch)
+* Build a database that has the quotes of 10 Star Wars character
+* Utilize the Star Wars api to access information about the 10 Star Wars characters
+
+
+
 
 
 #### Sources
