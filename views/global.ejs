@@ -55,8 +55,10 @@
         $('form').submit(function(e){
           e.preventDefault(); // prevents page reloading
           let charImage = "<%= character.img %>&";
-          if(!charImage){
+          let charImageCheck = "<%= character.img %>"
+          if(!charImageCheck){
             charImage = "<%= character.name %>: "
+            console.log()
           }
           socket.emit('chat message', charImage + $('#m').val());
           $('#m').val('');
@@ -73,6 +75,7 @@
             }
 
           } else {
+            console.log(msg);
             $('#messages').append($('<div> message-row', {class: 'p-2'}).text(msg));
             if(isScrolledToBottom) {
               domMessages.scrollTop = domMessages.scrollHeight - domMessages.clientHeight;

@@ -34,7 +34,7 @@ router.get('/confirm', function(req, res) {
 		})
 
 		console.log(possibleChars);
-		res.render('character/confirm', {characters: possibleChars});
+		res.render('character/confirm', {characters: possibleChars, name: req.query.name});
 
 	}).catch(function(err) {
 		console.log(err);

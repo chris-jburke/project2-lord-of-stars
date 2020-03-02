@@ -55,7 +55,8 @@
         $('form').submit(function(e){
           e.preventDefault(); // prevents page reloading
           let charImage = "<%= data.character.img %>&";
-          if(!charImage){
+          let charImageCheck = "<%= data.character.img %>";
+          if(!charImageCheck){
             charImage = "<%= data.character.name %>: "
           }
           socket.emit('<%=data.room %> message', charImage + $('#m').val());

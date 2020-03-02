@@ -27,6 +27,14 @@ Express authentication template using Passport + flash messages + custom middlew
   * Run `sequelize db:migrate` to run migrations
 
 #### Wireframes
+<https://wireframe.cc/SQpBk4>
+<https://wireframe.cc/uANSx0>
+<https://wireframe.cc/gU4jRu>
+<https://wireframe.cc/Q07Hu8>
+<https://wireframe.cc/2GbKrT>
+<https://wireframe.cc/Squuqc>
+<https://wireframe.cc/y75XI0>
+
 
 #### Sources
 <http://jsfiddle.net/dotnetCarpenter/KpM5j/>

@@ -35,7 +35,8 @@ html, body {
 }
 .message-img{
 	padding: 0 0;
-	border-radius: 45px;
+	border-radius: 50%;
+	height: 65px;
 	width: 65px;
 }
 .profile-quotes {
@@ -44,7 +45,7 @@ html, body {
 	margin-bottom: 8px;
 }
 #character-search-field {
-	width: 35vw;
+	width: 25vw;
 }
 .chat-form {
 	margin-top: 5px;

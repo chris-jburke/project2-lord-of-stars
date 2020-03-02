@@ -1,4 +1,4 @@
-<h1>Confirm Page</h1>
+<h1 class="profile-text">Confirm Page</h1>
 
 <ul>
 	<% characters.forEach(function(character) { %>
@@ -13,3 +13,6 @@
 		<br>
 	<% }) %>
 </ul>
+<% if(characters.length === 0) { %>
+	<h2 class="profile-text">No characters found of name <%= name %></h2>
+<% } %>
