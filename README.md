@@ -27,14 +27,23 @@ Express authentication template using Passport + flash messages + custom middlew
   * Run `createdb express_auth_test` to create the test database
   * Run `sequelize db:migrate` to run migrations
 
+
 ## Project Specifications
+
+#### User Guide
+* Create a profile/login
+* Select a character using the Character Selector page
+* Upload a picture for your character if there isn't one already(optional)
+* To chat navigate to the global chat page or the rooms page
+* Click on a quote to load it into the chat form and then send it to the chat with the send button
+* Click on the dropdown box to search through quotes for your character
+* To join a specific room type in the name of the room
 
 #### Technologies Used
 * Node.js
 * Express
 * Postgres/Sequelize
 * EJS
-
 
 #### Wireframes
 <https://wireframe.cc/SQpBk4>
@@ -57,6 +66,13 @@ Express authentication template using Passport + flash messages + custom middlew
 * Add the ability to upload of picture of your character using cloudinary
 * Updated the chat to include the picture of the characters
 * Styled the site and added some quality of life changes
+
+### Application Purpose
+
+#### User Story
+There is a major issue on the internet which is the lack of a web app that allows a user to role play through an interactive chat app. More specially I will create a chat app that only has one global feed in which users can select a character from LOTR and interact with the chat using only quotes from their selected character.
+The user of my app is a person who is a fan of The Lord of the Rings and who wants to interact with other fans in a unique way.
+
 
 #### MVP:
 * Utilize the LOTR api to access information about LOTR characters
