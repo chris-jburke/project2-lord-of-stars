@@ -22,7 +22,7 @@ html, body {
 	width: 50%;
 }
 .link-text {
-	font-size: 2em;
+	font-size: 1.5em;
 	color: black;
 }
 .profile-text{
@@ -76,7 +76,6 @@ html, body {
 #messages {
 	height: 80vh;
 	background-color: #000000;
-	border-radius: 25px;
 	color: white;
 	list-style: none;
 	overflow: scroll;
