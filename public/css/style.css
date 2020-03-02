@@ -3,7 +3,6 @@ html, body {
 	min-width: 100vh;
 }
 
-
 .alert {
 	border-radius: 10px;
 	box-shadow: .1em .1em hotpink;
@@ -15,6 +14,12 @@ html, body {
 .home-text {
 	text-align: center;
 	font-size: 5em;
+}
+.home-image {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
 }
 .link-text {
 	font-size: 2em;
